@@ -12,30 +12,27 @@ public class ToggleSwitch : MonoBehaviour
     public Image backgroundImage;
     public Color onColor;
     public Color offColor;
-    public float offX;
-    public float onX;
     public float tweenTime = 0.25f;
+
+    private float onX;
+    private float offX;
 
     void Awake()
     {
         offX = toggleIndicator.anchoredPosition.x;
-        onX = backgroundImage.rectTransform.rect.width - toggleIndicator.rect.width + offX;
-
+        onX = -offX;
         toggle.onValueChanged.AddListener(OnSwitch);
 
-        if (toggle.isOn) {
-            OnSwitch(true);
-        }
+        if (toggle.isOn) OnSwitch(true);
     }
 
     void OnSwitch(bool on) {
         ToggleColor(on);
         MoveIndicator(on);
-        Debug.Log(string.Format("OnSwitch Toggle: {0}", on));
     }
 
     private void ToggleColor(bool value) {
-        backgroundImage.DOColor(value ? onColor : offColor, tweenTime);
+        backgroundImage.color = value ? onColor : offColor;
     }
 
     private void MoveIndicator(bool value) {
@@ -45,5 +42,4 @@ public class ToggleSwitch : MonoBehaviour
     void OnDestroy() {
         toggle.onValueChanged.RemoveListener(OnSwitch);
     }
-
 }

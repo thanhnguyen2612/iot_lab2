@@ -71,7 +71,6 @@ namespace Dashboard
         protected override void OnConnected()
         {
             base.OnConnected();
-            SubscribeTopics();
             dashboard_manager.SwitchLayer();
         }
 
@@ -126,8 +125,6 @@ namespace Dashboard
             Debug.Log("Received: " + msg);
             if (topic == _topics[0])
                 ProcessMessageStatus(msg);
-            else if (topic == _topics[1] || topic == _topics[2])
-                ProcessMessageControl(msg);
         }
 
         private void ProcessMessageStatus(string msg)
@@ -138,18 +135,11 @@ namespace Dashboard
             dashboard_manager.UpdateStatusData(_statusData);
         }
 
-        private void ProcessMessageControl(string msg)
-        {
-            _controlData = JsonConvert.DeserializeObject<ControlData>(msg);
-            dashboard_manager.UpdateToggle(_controlData);
-        }
-
         public void PublishLed()
         {
             ControlData data = dashboard_manager.GetLedControlData();
             string msg_control = JsonConvert.SerializeObject(data);
             client.Publish(_topics[1], System.Text.Encoding.UTF8.GetBytes(msg_control), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
-            Debug.Log("Publish LED control");
         }
 
         public void PublishPump()
@@ -157,7 +147,6 @@ namespace Dashboard
             ControlData data = dashboard_manager.GetPumpControlData();
             string msg_control = JsonConvert.SerializeObject(data);
             client.Publish(_topics[2], System.Text.Encoding.UTF8.GetBytes(msg_control), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
-            Debug.Log("Publish PUMP control");
         }
     }
 }

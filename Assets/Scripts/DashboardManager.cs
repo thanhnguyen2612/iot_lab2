@@ -26,10 +26,10 @@ namespace Dashboard
         public Text Temperature;
         [SerializeField]
         public Text Humidity;
-        // [SerializeField]
-        // public ToggleSwitch LedToggle;
-        // [SerializeField]
-        // public ToggleSwitch PumpToggle;
+        [SerializeField]
+        public ToggleSwitch LedToggle;
+        [SerializeField]
+        public ToggleSwitch PumpToggle;
 
         private Tween twenFade;
 
@@ -43,20 +43,16 @@ namespace Dashboard
         {
             ControlData data = new ControlData();
             data.device = "LED";
-            // data.status = LedToggle.toggle.isOn ? "OFF" : "ON";
-            // LedToggle.toggle.interactable = false;
-            data.status = "ON";
+            data.status = LedToggle.toggle.isOn ? "OFF" : "ON";
             return data;
         }
 
         public ControlData GetPumpControlData()
         {
-            return GetLedControlData();
-            // ControlData data = new ControlData();
-            // data.device = "PUMP";
-            // data.status = PumpToggle.toggle.isOn ? "OFF" : "ON";
-            // PumpToggle.toggle.interactable = false;
-            // return data;
+            ControlData data = new ControlData();
+            data.device = "PUMP";
+            data.status = PumpToggle.toggle.isOn ? "OFF" : "ON";
+            return data;
         }
 
         public void UpdateConnectStatus(string status) {
@@ -67,21 +63,6 @@ namespace Dashboard
         {
             Temperature.text = float.Parse(status_data.temperature) + "°C";
             Humidity.text = float.Parse(status_data.humidity) + "°%";
-        }
-
-        public void UpdateToggle(ControlData data)
-        {
-            Debug.Log("Update Toggle");
-            // if (data.device == "LED")
-            // {
-            //     LedToggle.toggle.interactable = true;
-            //     LedToggle.toggle.isOn = data.status == "ON" ? true : false;
-            // }
-            // if (data.device == "PUMP")
-            // {
-            //     PumpToggle.toggle.interactable = true;
-            //     PumpToggle.toggle.isOn = data.status == "ON" ? true : false;
-            // }
         }
 
         public void Fade(CanvasGroup _canvas, float endValue, float duration, TweenCallback onFinish)
