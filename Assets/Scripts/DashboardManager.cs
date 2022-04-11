@@ -43,7 +43,7 @@ namespace Dashboard
         {
             ControlData data = new ControlData();
             data.device = "LED";
-            data.status = LedToggle.toggle.isOn ? "OFF" : "ON";
+            data.status = LedToggle.toggle.isOn ? "ON" : "OFF";
             return data;
         }
 
@@ -51,7 +51,7 @@ namespace Dashboard
         {
             ControlData data = new ControlData();
             data.device = "PUMP";
-            data.status = PumpToggle.toggle.isOn ? "OFF" : "ON";
+            data.status = PumpToggle.toggle.isOn ? "ON" : "OFF";
             return data;
         }
 
