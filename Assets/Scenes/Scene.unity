@@ -432,8 +432,6 @@ MonoBehaviour:
   toggle: {fileID: 76243284}
   toggleIndicator: {fileID: 1718282192}
   backgroundImage: {fileID: 1465358201}
-  onColor: {r: 0.3185743, g: 1, b: 0, a: 0}
-  offColor: {r: 1, g: 0.21692765, b: 0, a: 0}
   tweenTime: 0.25
 --- !u!114 &76243284
 MonoBehaviour:
@@ -2597,8 +2595,6 @@ MonoBehaviour:
   toggle: {fileID: 1262137262}
   toggleIndicator: {fileID: 1793658463}
   backgroundImage: {fileID: 1008447420}
-  onColor: {r: 0.3185743, g: 1, b: 0, a: 0}
-  offColor: {r: 1, g: 0.21692765, b: 0, a: 0}
   tweenTime: 0.25
 --- !u!114 &1262137262
 MonoBehaviour:
@@ -3634,7 +3630,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718282191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3829,7 +3825,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793658462}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
