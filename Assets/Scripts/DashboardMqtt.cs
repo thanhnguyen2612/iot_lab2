@@ -65,7 +65,6 @@ namespace Dashboard
 
         protected override void OnConnecting()
         {
-            dashboard_manager.UpdateConnectStatus(string.Format("Connecting to {0}:{1}...", this.brokerAddress, this.brokerPort.ToString()));
             base.OnConnecting();
         }
 

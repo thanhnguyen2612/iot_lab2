@@ -37,11 +37,6 @@ namespace Dashboard
             BrokerUrlInput.text = "mqttserver.tk";
             UsernameInput.text = "bkiot";
             PasswordInput.text = "12345678";
-
-            _loginLayer.interactable = true;
-            _loginLayer.blocksRaycasts = true;
-            _dataLayer.interactable = false;
-            _dataLayer.blocksRaycasts = false;
         }
 
         public ControlData GetLedControlData()
