@@ -18,7 +18,7 @@ namespace Dashboard
         [SerializeField]
         public InputField PasswordInput;
         [SerializeField]
-        public Text ConnectStatus;
+        public CanvasGroup ConnectStatus;
 
         [SerializeField]
         private CanvasGroup _dataLayer;
@@ -31,12 +31,14 @@ namespace Dashboard
         [SerializeField]
         public ToggleSwitch PumpToggle;
 
+        private Text _ConnectStatusText;
         private Tween twenFade;
 
         void Start() {
             BrokerUrlInput.text = "mqttserver.tk";
             UsernameInput.text = "bkiot";
             PasswordInput.text = "12345678";
+            _ConnectStatusText = ConnectStatus.GetComponentInChildren<Text>();
         }
 
         public ControlData GetLedControlData()
@@ -56,13 +58,14 @@ namespace Dashboard
         }
 
         public void UpdateConnectStatus(string status) {
-            StartCoroutine(_DisplayConnectionStatus(status));
+            _ConnectStatusText.text = status;
+            StartCoroutine(_DisplayConnectionStatus());
         }
 
         public void UpdateStatusData(StatusData status_data)
         {
             Temperature.text = float.Parse(status_data.temperature) + "°C";
-            Humidity.text = float.Parse(status_data.humidity) + "°%";
+            Humidity.text = float.Parse(status_data.humidity) + "%";
         }
 
         public void Fade(CanvasGroup _canvas, float endValue, float duration, TweenCallback onFinish)
@@ -110,11 +113,11 @@ namespace Dashboard
             }
         }
 
-        IEnumerator _DisplayConnectionStatus(string status)
+        IEnumerator _DisplayConnectionStatus()
         {
-            ConnectStatus.text = status;
+            ConnectStatus.alpha = 1;
             yield return new WaitForSeconds(2f);
-            ConnectStatus.text = "";
+            ConnectStatus.alpha = 0;
         }
 
         public void SwitchLayer()

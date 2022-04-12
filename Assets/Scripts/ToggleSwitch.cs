@@ -11,8 +11,7 @@ public class ToggleSwitch : MonoBehaviour
     public RectTransform toggleIndicator;
     public Image backgroundImage;
     public float tweenTime = 0.25f;
-
-    private Color onColor;
+    private Color onColor = new Color(0f, 1f, 0.13f, 1f);
     private Color offColor;
     private float onX;
     private float offX;
@@ -21,7 +20,6 @@ public class ToggleSwitch : MonoBehaviour
     {
         offX = toggleIndicator.anchoredPosition.x;
         onX = -offX;
-        onColor = new Color(0.12f, 1f, 0f, 1f);
         offColor = backgroundImage.color;
         toggle.onValueChanged.AddListener(OnSwitch);
 
